@@ -1,8 +1,10 @@
+import 'package:bloc/bloc.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:blocs_app/presentation/screens/screens.dart';
 
 
-final appRouter = GoRouter(
+final _publicRouter = GoRouter(
   routes: [
 
     GoRoute(
@@ -43,3 +45,16 @@ final appRouter = GoRouter(
 
 
   ]);
+
+
+class RouterCubit extends Cubit<GoRouter> {
+  RouterCubit(): super(_publicRouter);
+
+  static String lastRoute = '/';
+
+  void goBack() => state.pop();
+
+  void goHome() => state.go('/');
+
+  void _setLastRoute(String route) => lastRoute = route;
+}
