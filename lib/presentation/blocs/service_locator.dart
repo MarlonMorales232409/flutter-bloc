@@ -1,4 +1,5 @@
 import "package:blocs_app/config/config.dart";
+import "package:blocs_app/presentation/blocs/05_pokemon_bloc/pokemon_bloc.dart";
 import "package:blocs_app/presentation/blocs/bloc.dart";
 import "package:get_it/get_it.dart";
 
@@ -11,4 +12,5 @@ void serviceLocatorInit() {
   getIt.registerSingleton(CounterCubit());
 
   getIt.registerSingleton(GuestsBloc());
+  getIt.registerSingleton(PokemonBloc(fetchPokemonName: PokemonInformation.getPokemonName));
 }
