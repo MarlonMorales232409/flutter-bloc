@@ -18,11 +18,12 @@ class GuestsBloc extends Bloc<GuestsEvent, GuestsState> {
       Todo(id: uuid.v4(), description: RandomGenerator.getRandomName(), completedAt: DateTime.now()),
     ]
   )) {
-
     on<SetCustomFilterEvent>((event, emit) => emit(state.copyWith(guestFilter: event.filter)));
     on<AddGuestEvent>( _addGuestHandler );
     on<ToggleGuestEvent>( _toggleGuestHandler );
   }
+
+  // *** Event callers
 
   void changeFilter(GuestFilter newFilter) => add(SetCustomFilterEvent(newFilter));
   void addNewGuest(String name) => add(AddGuestEvent(name));
