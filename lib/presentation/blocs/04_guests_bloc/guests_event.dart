@@ -7,12 +7,18 @@ sealed class GuestsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class SetAllFilterEvent extends GuestsEvent {}
-class SetInvitedFilterEvent extends GuestsEvent {}
-class SetNotInvitedFilterEvent extends GuestsEvent {}
-
 class SetCustomFilterEvent extends GuestsEvent {
   final GuestFilter filter;
 
   const SetCustomFilterEvent(this.filter);
+}
+
+class AddGuestEvent extends GuestsEvent {
+  final String name;
+  const AddGuestEvent(this.name);
+}
+
+class ToggleGuestEvent extends GuestsEvent {
+  final String id;
+  const ToggleGuestEvent(this.id);
 }

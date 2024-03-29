@@ -7,6 +7,17 @@ class GuestsState extends Equatable {
   final GuestFilter guestFilter;
   final List<Todo> guestList;
 
+
+  int get howManyGuest => guestList.length;
+
+  List<Todo> get getFilteredGuest => switch(guestFilter) {
+    GuestFilter.all => guestList,
+    GuestFilter.invited => guestList.where((guest) => guest.done).toList(),
+    GuestFilter.notInvited => guestList.where((guest) => !guest.done).toList(),
+  };
+
+  int get howManyGuestFiltered => getFilteredGuest.length;
+
   const GuestsState({
     this.guestFilter = GuestFilter.all,
     this.guestList = const []
