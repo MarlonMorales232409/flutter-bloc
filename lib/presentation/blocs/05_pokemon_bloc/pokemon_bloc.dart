@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:blocs_app/config/config.dart';
 import 'package:equatable/equatable.dart';
 
 part 'pokemon_event.dart';
@@ -22,7 +21,7 @@ class PokemonBloc extends Bloc<PokemonEvent, PokemonState> {
         return state.pokemons[id]!;
       }
 
-      final pokemonName = await PokemonInformation.getPokemonName(id);
+      final pokemonName = await _fetchPokemonName(id);
       add(PokemonAdded(id, pokemonName));
       return pokemonName;
     } catch (e) {
